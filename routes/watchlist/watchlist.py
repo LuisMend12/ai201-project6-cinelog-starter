@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from services.watchlist_service import save_to_watchlist, get_watchlist
+from services.watchlist_service import add_to_watchlist, get_watchlist
 
 watchlist_bp = Blueprint("watchlist", __name__, url_prefix="/watchlist")
 
@@ -19,7 +19,7 @@ def add_film_to_watchlist(user_id):
     if not data or "film_id" not in data:
         return jsonify({"error": "film_id is required"}), 400
     try:
-        entry = save_to_watchlist(user_id, data["film_id"])
+        entry = add_to_watchlist(user_id, data["film_id"])
         return jsonify({
             "message": "Added to watchlist",
             "entry_id": entry.id,

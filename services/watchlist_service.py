@@ -1,7 +1,7 @@
 from models import db, Film, WatchlistEntry, User
 
 
-def save_to_watchlist(user_id, film_id):
+def add_to_watchlist(user_id, film_id):
     """Add a film to a user's watchlist.
 
     Raises ValueError for unknown user or film IDs.
