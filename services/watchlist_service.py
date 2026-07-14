@@ -34,7 +34,7 @@ def get_watchlist(user_id):
         WatchlistEntry.query
         .join(Film)
         .filter(WatchlistEntry.user_id == user_id)
-        .order_by(Film.title)
+        .order_by(WatchlistEntry.added_at.desc())
         .all()
     )
     return [_entry_dict(e) for e in entries]
