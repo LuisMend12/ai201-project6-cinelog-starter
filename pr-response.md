@@ -173,4 +173,17 @@ curl -X POST http://127.0.0.1:5000/watchlist/1/add \
 pytest tests/ -v
 ```
 
-**Git log screenshot:** *(see below — taken after interactive rebase in Milestone 4)*
+**Git log (after interactive rebase):**
+
+```
+fd6e918 docs: add pr-response.md with design decisions and PR description
+f89dc23 fix: sort watchlist by date-added descending instead of alphabetical
+8b0cae8 test: add test for nonexistent film_id in add_to_watchlist
+c6251d5 fix: add deduplication check to prevent duplicate watchlist entries
+ca692e1 fix: rename save_to_watchlist to add_to_watchlist per naming convention
+92726b7 feat: add watchlist model, endpoints, and service
+14c4888 refactor: migrate Film.id from integer to UUID       ← main
+ef2ac54 feat: initial CineLog app with Film, User, and Collection models
+```
+
+6 commits on `feature/watchlist` above `main`. No merge commits. All conventional format (`feat:`, `fix:`, `test:`, `docs:`). Each commit represents one logical change.
