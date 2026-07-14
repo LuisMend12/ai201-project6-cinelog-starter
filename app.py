@@ -10,7 +10,9 @@ def create_app():
     db.init_app(app)
 
     from routes.collection.collection import collection_bp
+    from routes.watchlist.watchlist import watchlist_bp
     app.register_blueprint(collection_bp)
+    app.register_blueprint(watchlist_bp)
 
     with app.app_context():
         db.create_all()

@@ -41,3 +41,18 @@ class Collection(db.Model):
 
     user = db.relationship("User", backref=db.backref("collections", lazy="dynamic"))
     film = db.relationship("Film", backref=db.backref("collected_by", lazy="dynamic"))
+
+
+class WatchlistEntry(db.Model):
+    """Films a user intends to watch."""
+
+    __tablename__ = "watchlist"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    film_id = db.Column(db.String(36), db.ForeignKey("films.id"), nullable=False)
+    public = db.Column(db.Boolean, default=True, nullable=False)
+    added_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+
+    user = db.relationship("User", backref=db.backref("watchlist", lazy="dynamic"))
+    film = db.relationship("Film", backref=db.backref("watchlisted_by", lazy="dynamic"))
